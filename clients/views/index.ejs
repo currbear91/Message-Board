@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mongoose Dashboard</title>
+		<link rel="stylesheet" type="text/css" href="materialize.css">
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+		<link rel="stylesheet" type="text/css" href="../static/style.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+	</head>
+	<body>
+		<h1>AYYY YO RAY RAY</h1>
+		<div id='message'>
+			<form action ='/message' method = 'post'>
+				<p> Name: <input type='text' name='name'></p>
+				<p> Message: <textarea name='message'></textarea></p>
+				<input type='submit' name='submit' value='Post Message'>
+			</form>
+		</div>
+		<div id ='comment'>
+			<% for (var x in messages) { %> 
+				<h3 >Name: <%= messages[x].name %> </h3>
+				<p >Message: <%= messages[x].message %> </p>
+				<% for (var i = 0; i< messages[x]._comments.length; i++ ) { %> 
+				<h2> Name:	<%=  messages[x]._comments[i].name %> </h2>
+				<h2> Comment :<%=  messages[x]._comments[i].comment %> </h2>
+				<% } %>
+				<form action =<%='/comment/' + messages[x].id %> method = 'post'>
+				<p class ='name'> Name: <input type='text' name='name'></p>
+				<p class ='name'> comment: <textarea name='comment'></textarea></p>
+				<input type='submit' name='submit' value='Post Comment'>
+				</form>
+			<% } %> 
+			<br>
+		</div>
+
+
+
+
+
+	</body>
+</html>
